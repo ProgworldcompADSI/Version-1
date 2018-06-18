@@ -18,10 +18,24 @@ if ($_SESSION['estado']!="1")
 <link rel="shortcut icon" type="image/ico" href="imagenes/icono.png"  />
 		<link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
 		<link href="bootstrap/css/style.css" rel="stylesheet" type="text/css" media="all">
-	<link rel="stylesheet" type="text/css" href="bootstrap/css/selects.css" />
-		<link rel="stylesheet" type="text/css" href="bootstrap/css/botones.css" />
+	  <link rel="stylesheet" type="text/css" href="bootstrap/css/selects.css" />
+	    <link rel="stylesheet" type="text/css" href="bootstrap/css/botones.css" />
 
+<style>
+ label.C{
 		
+		background-color: #000000;
+		border-top: transparent;
+	    border-bottom:4px solid #ffbf00;
+		border-bottom-right-radius: 15px;
+	    border-bottom-left-radius: 15px;
+		padding: 8px, 8px;
+		cursor: pointer;
+		
+		}
+
+
+</style>		
 
 			
 </head>
@@ -31,7 +45,7 @@ if ($_SESSION['estado']!="1")
     		
 		<header>
 			<div class="container dark-bg no_left no_right">
-            <div class="col-md-4 col-xs-12 no_left">
+            <div class="col-md-4 col-xs-3 no_left">
 						
 							<img src="imagenes/LOGO-FINAL2.png" width="280" height="150">
 					
@@ -53,12 +67,12 @@ if ($_SESSION['estado']!="1")
                   <center>
                     <div class="container">
                     
-        
+        <?php include_once'../modelo/Musuario.php';?><br><br>
                    
   <center><font color="#ffbf00" size="+1" face="Trebuchet MS, Arial, Helvetica, sans-serif">SELECCIONA LOS CAMPOS QUE DESEAS MODIFICAR</font></center><br><br> 
  <?php
  error_reporting(E_ERROR);
- $mysql=new mysqli("localhost","root","","peluqueria");
+$mysql=new mysqli("localhost","root","","peluqueria");
  if ($mysql->connect_error)
  die("Problemas con la conexión a la base de datos");
  $d2=($_SESSION['usuario']);
@@ -72,25 +86,25 @@ if ($_SESSION['estado']!="1")
  {
  ?>
  <form method="post" action="cuenta3.php">
-<h4>NOMBRE:</h4>
+NOMBRE:<br>
  <input type="text" class="in"style="width:300px; height:30px" name="nombree" size="50" required autofocus
  value="<?php echo $reg['nombre']; ?>">
  <br><br>
-<h4>APELLIDO:</h4>
+APELLIDO:<br>
  <input type="text" class="in"style="width:300px; height:30px" name="apellidoo" size="50" required autofocus
  value="<?php echo $reg['apellido']; ?>">
  <br><br>
-<h4>DOCUMENTO:</h4>
+DOCUMENTO:<br>
  <input type="text" class="in"style="width:300px; height:30px" name="documentoo" size="50" required autofocus
  value="<?php echo $reg['documento']; ?>">
  <br><br>
- <h4>CELULAR:</h4>
+ CELULAR:<br>
   <input type="text" class="in"style="width:300px; height:30px" name="celularr" size="50" 
  value="<?php echo $reg['celular']; ?>">
- <br>
+ <br><br>
 
  <br><br>
-  <button class="boton_1" style="width:150px"<input type="submit" name="login">MODIFICAR </button>
+  <button class="boton_1" style="width:200px"<input type="submit" name="login">MODIFICAR </button>
  </form>
 <br>
 
@@ -106,5 +120,3 @@ if ($_SESSION['estado']!="1")
 </body>
 </html>
  
- 
-
