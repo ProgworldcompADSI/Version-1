@@ -19,15 +19,25 @@ if ($_SESSION['estado']!="1")
 		<link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
 		<link href="bootstrap/css/style.css" rel="stylesheet" type="text/css" media="all">
         <link rel="stylesheet" href="bootstrap/css/style2.css" type="text/css" media="screen"/>
+        <link rel="stylesheet" type="text/css" href="bootstrap/css/tablasC.css" />
         <link rel="stylesheet" type="text/css" href="bootstrap/css/botones.css" />
-<style type="text/css">
 	
-	.tablas table { border-collapse: collapse; text-align: left; width: 100%; } .tablas {font: normal 12px/150% Geneva, Arial, Helvetica, sans-serif; background: #fff; overflow: hidden; border: 6px solid #000000; -webkit-border-radius: 20px; -moz-border-radius: 20px; border-radius: 20px; }.tablas table td, .tablas table th { padding: 13px 20px; }.tablas table thead th {background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #FFBF00), color-stop(1, #333333) );background:-moz-linear-gradient( center top, #FFBF00 5%, #333333 100% );filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFBF00', endColorstr='#333333');background-color:#FFBF00; color:#000000; font-size: 20px; font-weight: bold; border-left: 1px solid #000000; } .tablas table thead th:first-child { border: none; }.tablas table tbody td { color: #333333; border-left: 1px solid #000000;font-size: 17px;border-bottom: 1px solid #000000;font-weight: bold; }.tablas table tbody .alt td { background: #666666; color: #FFFFFF; }.tablas table tbody td:first-child { border-left: none; }.tablas table tbody tr:last-child td { border-bottom: none; }.tablas table tfoot td div { border-top: 1px solid #000000;background: #999999;} .tablas table tfoot td { padding: 0; font-size: 10px } .tablas table tfoot td div{ padding: 0px; }
-	
-	
-	</style>
 
+	<style>
+ label.C{
 		
+		background-color: #000000;
+		border-top: transparent;
+	    border-bottom:4px solid #ffbf00;
+		border-bottom-right-radius: 15px;
+	    border-bottom-left-radius: 15px;
+		padding: 8px, 8px;
+		cursor: pointer;
+		
+		}
+
+
+</style>	
 
 			
 </head>
@@ -37,7 +47,7 @@ if ($_SESSION['estado']!="1")
     		
 		<header>
 			<div class="container dark-bg no_left no_right">
-            <div class="col-md-4 col-xs-12 no_left">
+            <div class="col-md-4 col-xs-3 no_left">
 						
 							<img src="imagenes/LOGO-FINAL2.png" width="280" height="150">
 					
@@ -58,14 +68,11 @@ if ($_SESSION['estado']!="1")
                 <div class="col-lg-12">
                   <center>
                     <div class="container">
- 
  <?php include_once'../modelo/Musuario.php';?>
- 
- 
 <br><br>
      <?php
  error_reporting(E_ERROR);
- $mysql=new mysqli("localhost","root","","peluqueria");
+  $mysql=new mysqli("localhost","root","","peluqueria");
  if ($mysql->connect_error)
  die("Problemas con la conexión a la base de datos");
  $d1=($_SESSION['usuario']);
@@ -99,8 +106,9 @@ if ($_SESSION['estado']!="1")
   <td><?php echo $reg['documento']; ?></td>
 
   <td><?php echo $reg['celular']; ?></td>
+  
+  </tr>
 
-</tr>
      </tbody>
            </table></div>
  <br><br><br>
@@ -134,4 +142,3 @@ if ($_SESSION['estado']!="1")
 </html>
  
  
-
