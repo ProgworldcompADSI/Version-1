@@ -1,11 +1,30 @@
 <!DOCTYPE html>
 <?php
+error_reporting(E_ERROR);
 session_start();
 if ($_SESSION['estado']!="1")
 {
 	header("Location: logout.php");
 }
+
+
+
 ?>
+<style>
+ label.C{
+		
+		background-color: #000000;
+		border-top: transparent;
+	    border-bottom:4px solid #ffbf00;
+		border-bottom-right-radius: 15px;
+	    border-bottom-left-radius: 15px;
+		padding: 8px, 8px;
+		cursor: pointer;
+		
+		}
+
+
+</style>
 <html><head>
 
 		<meta charset="utf-8">
@@ -77,7 +96,7 @@ background-color:#333;
     		
 		<header>
 			<div class="container dark-bg no_left no_right">
-            <div class="col-md-4 col-xs-12 no_left">
+            <div class="col-md-4 col-xs-3 no_left">
 						
 							<img src="imagenes/LOGO-FINAL2.png" width="280" height="150">
 					
@@ -100,9 +119,8 @@ background-color:#333;
                     <div class="container">
                     
 
-<?php include_once'../modelo/Musuario.php';?>
 
- 
+ <?php include_once'../modelo/Musuario.php';?>
 
 <img src="imagenes/BIENVENIDO.png" width="500" height="300">
 
