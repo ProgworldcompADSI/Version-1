@@ -17,7 +17,7 @@ if ($_SESSION['estado']!="1")
 <link rel="shortcut icon" type="image/ico" href="imagenes/icono.png"  />
 		<link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
 		<link href="bootstrap/css/style.css" rel="stylesheet" type="text/css" media="all">
-	<link rel="stylesheet" type="text/css" href="bootstrap/css/selects.css" />
+	    <link rel="stylesheet" type="text/css" href="bootstrap/css/selects.css" />
 	    <link rel="stylesheet" type="text/css" href="bootstrap/css/botones.css" />
 
 		
@@ -30,7 +30,7 @@ if ($_SESSION['estado']!="1")
     		
 		<header>
 			<div class="container dark-bg no_left no_right">
-            <div class="col-md-4 col-xs-12 no_left">
+            <div class="col-md-4 col-xs-3 no_left">
 						
 							<img src="imagenes/LOGO-FINAL2.png" width="280" height="150">
 					
@@ -71,18 +71,23 @@ if ($_SESSION['estado']!="1")
        <br>
 <center><font color="#ffbf00" size="+3" face="Trebuchet MS, Arial, Helvetica, sans-serif">DÉJANOS TU OPINIÓN</font></center><br><br>             
  <form name="areat" method="post"action="comentarios4.php">
-               
-         
-<input type="text" class="in" name="celular" placeholder="celular" value="<?php echo $reg['celular']; ?>" required autofocus  style="width:330px; height:40px"> 
+<table>
+<tr>
+<td>
+<font color="#fff" size="3px"face="Trebuchet MS, Arial, Helvetica, sans-serif">Nombre:</font> <br><br>             
+<input type="text" class="in" name="nombress" readonly value="<?php echo $reg['nombre']; echo " "; echo $reg['apellido']; ?>" required autofocus style="text-align: center;width:330px; height:40px"> 
 <br><br>
-<input type="text" class="in" name="nombress" placeholder="nombre y apellido"value="<?php echo $reg['nombre']; echo " "; echo $reg['apellido']; ?>" required autofocus readonly  style="width:330px; height:40px"> 
+<font color="#fff" size="3px"face="Trebuchet MS, Arial, Helvetica, sans-serif">Celular:   </font> <br> <br>    
+<input type="text" class="in" name="celulars" readonly value="<?php echo $reg['celular']; ?>" required autofocus style="text-align: center;width:330px; height:40px"> 
+<br><br><font color="#fff" size="3px"face="Trebuchet MS, Arial, Helvetica, sans-serif">Comentario:  <br><br>
+<textarea name="comentarios" class="form-control" required autofocus style="text-align: center; width:330px; height:200px; background: #181818; border: 2px solid #ffbf00; border-radius: 10px 10px 10px 10px; color: #ffbf00; padding: 5px; font-family:Trebuchet MS, Arial, Helvetica, sans-serif; font-size: 15px;" placeholder="Escribe aquí tu comentario"></textarea></td><td width="50px"></td>
+<td><center>
+<font color="#FFF" size="4px"face="Trebuchet MS, Arial, Helvetica, sans-serif">Para nosotros es importante conocer tu opinion sobre el servicio y nuestros productos,<br> comenta que piensas y le tendremos en cuenta. <br><br>Gracias por dejarnos ser su primera opcion!</font><br><br>
+<img src="imagenes/comment.png" width="250px" height="250px"></center>
+</td></tr></table>
 <br><br>
 
-<textarea name="comentarios"  required autofocus style="width:330px; height:270px; background: #181818; border: 2px solid #ffbf00; border-radius: 10px 10px 10px 10px; color: #ffbf00; padding: 5px; font-family:Trebuchet MS, Arial, Helvetica, sans-serif; font-size: 15px;" placeholder="Escribe aquí tus comentarios"></textarea>
-<br><br>
-
-  <button class="boton_1" style="width:125px"<input type="submit" name="login">ENVIAR </button>
-
+ <center> <button class="boton_1" style="width:150px"<input type="submit" name="login">ENVIAR </button></center>
 </form>
  <?php
  }
@@ -94,7 +99,7 @@ if ($_SESSION['estado']!="1")
  ?>
 
                        <br>
-            
+         
             
         </div>
     </div> 
