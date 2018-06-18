@@ -18,9 +18,24 @@ if ($_SESSION['estado']!="1")
 <link rel="shortcut icon" type="image/ico" href="imagenes/icono.png"  />
 		<link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
 		<link href="bootstrap/css/style.css" rel="stylesheet" type="text/css" media="all">
+        <link rel="stylesheet" href="bootstrap/css/botones.css" type="text/css" media="screen"/>
 	
 
-<link rel="stylesheet" type="text/css" href="bootstrap/css/botones.css" />		
+		<style>
+ label.C{
+		
+		background-color: #000000;
+		border-top: transparent;
+	    border-bottom:4px solid #ffbf00;
+		border-bottom-right-radius: 15px;
+	    border-bottom-left-radius: 15px;
+		padding: 8px, 8px;
+		cursor: pointer;
+		
+		}
+
+
+</style>
 
 			
 </head>
@@ -30,7 +45,7 @@ if ($_SESSION['estado']!="1")
     		
 		<header>
 			<div class="container dark-bg no_left no_right">
-            <div class="col-md-4 col-xs-12 no_left">
+            <div class="col-md-4 col-xs-3 no_left">
 						
 							<img src="imagenes/LOGO-FINAL2.png" width="280" height="150">
 					
@@ -61,17 +76,17 @@ if ($_SESSION['estado']!="1")
  $a4=($_SESSION['clave']);
 $mysql->query("update usuario set nombre=('$_REQUEST[nombree]'), apellido=('$_REQUEST[apellidoo]'), documento=('$_REQUEST[documentoo]'), celular=('$_REQUEST[celularr]') where usuario.documento= '$d3' and usuario.contrasena= '$a4'") or
  die($mysql->error);
- echo '<br><br><font color="#ffbf00" size="+3" face="Trebuchet MS, Arial, Helvetica, sans-serif">SUS DATOS SE ACTUALIZARON EXISTOSAMENTE.</font><br><br><br>';
+ echo '<font color="#ffbf00" size="+1" face="Trebuchet MS, Arial, Helvetica, sans-serif">Se modificó el usuario exitosamente</font>';
 
-  echo "<img src='imagenes/chulo.png' width='250px' height='250px'>";
 
  $mysql->close();
  ?> 
  <br><br><br>
+ <img src="imagenes/chulo.png"><br><br><br>
    <form method="post" action="cuenta.php">
  <button class="boton_1" style="width:150px"<input type="submit" name="login">VOLVER </button>
   </form>
-  <br><br>
+  <br><br><br><br>
  </center>
  
 
