@@ -1,8 +1,16 @@
 <!DOCTYPE html>
 
-<html><head>
+<html>
+<?php
+session_start();
+if ($_SESSION['estado']!="1")
+{
+	header("Location: logout.php");
+}
+	?>
 
-		<meta charset="utf-8">
+<head>
+				<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Equipe Etoile</title>
@@ -12,31 +20,18 @@
 		<link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
 		<link href="bootstrap/css/style.css" rel="stylesheet" type="text/css" media="all">
 <style type="text/css">
-	.cuatro a {
-
-		
-  border-radius: 50px 50px 50px 50px / 50px 50px 50px 50px;
-     
-		
-	}
-	.cuatro a:hover {
-		
-border-radius: 50px 50px 50px 50px / 50px 50px 50px 50px;
-		
-		background-color: #0080FF;
-		padding: 1px;
-		border-top-width: 14px;
-		border-top-style: ridge;
-		border-top-color: #666;
-		border-right-color: #666;
-		border-bottom-color: #666;
-		border-left-color: #666;
-		border-right-width: 14px;
-		border-bottom-width: 14px;
-		border-left-width: 14px;
-		border-right-style: ridge;
-		border-bottom-style: ridge;
-		border-left-style: ridge;
+	.cuatro img {
+  padding: 20px;
+    border-radius: 50px 50px 50px 50px / 50px 50px 50px 50px;
+	text-align: center;
+	
+    }
+	
+	.cuatro img:hover {
+  padding: 10px;
+	border-radius: 50px 50px 50px 50px / 50px 50px 50px 50px;
+	text-align: center;
+	
 	}
 
 	</style>
@@ -50,7 +45,7 @@ border-radius: 50px 50px 50px 50px / 50px 50px 50px 50px;
     		
 		<header>
 			<div class="container dark-bg no_left no_right">
-            <div class="col-md-4 col-xs-12 no_left">
+            <div class="col-md-4 col-xs-3 no_left">
 						
 							<img src="imagenes/LOGO-FINAL2.png" width="280" height="150">
 					
@@ -64,30 +59,31 @@ border-radius: 50px 50px 50px 50px / 50px 50px 50px 50px;
 			</div>
 		</header>
 <br><br>
-<center><font color="#ffbf00" size="+3" face="Trebuchet MS, Arial, Helvetica, sans-serif">REGISTRAR</font></center><br><br><br><br>
-
-
-		<div class="container">
+<div class="container">
         <div class="row">
             <div class="box">
              
                 <div class="col-sm-12">
+<center><font color="#ffbf00" size="+3" face="Trebuchet MS, Arial, Helvetica, sans-serif">REGISTRAR</font></center><br><br><br><br>
+
+
+		
                 <center>
             <div class="cuatro">
-            <table><tr><td>
+            <table><tr height=""><td>
             <a href="registrarF3.php"><br>
             <center>
             <font color="#ffbf00" size="+2" face="Trebuchet MS, Arial, Helvetica, sans-serif"><B>ADMINISTRADOR</B></font><br><br>
             </center>
-            <img src="imagenes/admin.png" width="200" height="200" ></a><br><br><br>
+            <img src="imagenes/admin.png" width="250" height="250" ></a><br><br><br>
             <td width="200"></td></td></td>
             
             <td>
             <a href="registrarF1.php"><br>
             <center>
-            <font color="#ffbf00" size="+2" face="Trebuchet MS, Arial, Helvetica, sans-serif"><B>USUARIO <br>O EMPLEADO</B></font><br><br>
+            <font color="#ffbf00" size="+2" face="Trebuchet MS, Arial, Helvetica, sans-serif"><B>EMPLEADO</B></font><br><br>
             </center>
-            <img src="imagenes/user2.png" width="200" height="200"></a><br><br><br>
+            <img src="imagenes/user2.png" width="250" height="250"></a><br><br><br>
             </td></tr></table><br></div>
 
             </center>
