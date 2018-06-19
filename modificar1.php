@@ -19,10 +19,25 @@ if ($_SESSION['estado']!="1")
 		<link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
 		<link href="bootstrap/css/style.css" rel="stylesheet" type="text/css" media="all">
         <link rel="stylesheet" href="bootstrap/css/style2.css" type="text/css" media="screen"/>
-	<link rel="stylesheet" type="text/css" href="bootstrap/css/botones.css" />
-		<link rel="stylesheet" type="text/css" href="bootstrap/css/selects.css" />
+                      <link rel="stylesheet" type="text/css" href="bootstrap/css/botones.css" />
+                <link rel="stylesheet" type="text/css" href="bootstrap/css/selects.css" />
+	
 
+<style>
+ label.C{
 		
+		background-color: #000000;
+		border-top: transparent;
+	    border-bottom:4px solid #ffbf00;
+		border-bottom-right-radius: 15px;
+	    border-bottom-left-radius: 15px;
+		padding: 8px, 8px;
+		cursor: pointer;
+		
+		}
+
+
+</style>		
 
 			
 </head>
@@ -32,7 +47,7 @@ if ($_SESSION['estado']!="1")
     		
 		<header>
 			<div class="container dark-bg no_left no_right">
-            <div class="col-md-4 col-xs-12 no_left">
+            <div class="col-md-4 col-xs-3 no_left">
 						
 							<img src="imagenes/LOGO-FINAL2.png" width="280" height="150">
 					
@@ -52,36 +67,38 @@ if ($_SESSION['estado']!="1")
                   <center>
                     <div class="container">
         <div class="card card-container">
-            
+            <?php include_once'../modelo/Musuario.php';?><br><br>
                       
  <?php
- $mysql=new mysqli("localhost","root","","peluqueria");
- if ($mysql->connect_error)
+ $mysql=new mysqli("localhost","root","","peluqueria"); 
+if ($mysql->connect_error)
  die("Problemas con la conexión a la base de datos");
 $d10=($_SESSION['usuario']);
 $d11=$_POST['antigua'];
  $registro=$mysql->query("SELECT contrasena FROM usuario where 
- documento = '$d10' and contrasena = '$d11'") or
+ documento = '$d10' and contrasena = sha1(('$d11'))") or
  die($mysql->error);
+ 
 
  if ($reg=$registro->fetch_array())
  {
  ?>
  <form method="post" action="modificar2.php">
-<br><h4>INGRESE SU NUEVA CONTRASEÑA:</h4><br>
-<input type="password" class="in" style="width:300px; height:30px" name="nueva" size="50" required autofocus
+<span style="color:#39ff14; font-size:20px;">INGRESE SU NUEVA CONTRASEÑA:</span>
+<br><br>
+<input type="password" class="in"style="width:300px; height:30px" name="nueva" size="50" required autofocus
 >
 <br><br>
-<button class="boton_1" style="width:200px" input type="submit" name="login">MODIFICAR </button>
+<button class="boton_1" style="width:200px"<input type="submit" name="login">MODIFICAR </button>
  </form>
  <?php
  }
  else{
- echo '<span style="color:#ffbf00; font-size:20px;"><B>Contraseña incorrecta.</B></span><p><br>';?>
+ echo '<span style="color:red; font-size:30px;"><B>Contraseña incorrecta.</B></span><p><br><br>';?>
  <img src="imagenes/ex.png" width="150" height="150">
 <form method="post" action="modificar.php">
 <br>
-<button class="btn btn-lg btn-primary btn-block btn-sm" style="width:200px"<input type="submit" name="login">VUELVE A INTENTARLO </button> </form>
+<button class="boton_1" style="width:200px"<input type="submit" name="login">VUELVE A INTENTARLO </button> </form>
 <?php
  }
  $mysql->close();
