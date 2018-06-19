@@ -49,6 +49,7 @@ document.getElementById("Joyeria").style.display = 'block';
 </script>
 <link rel="stylesheet" type="text/css" href="bootstrap/css/cuatro.css" />
 <link rel="stylesheet" type="text/css" href="bootstrap/css/selects.css" />
+ <link rel="stylesheet" type="text/css" href="bootstrap/css/botones.css" />
 	
 	
 
@@ -67,9 +68,9 @@ document.getElementById("Joyeria").style.display = 'block';
     		
 		<header>
 			<div class="container dark-bg no_left no_right">
-            <div class="col-md-4 col-xs-12 no_left">
+            <div class="col-md-4 col-xs-3 no_left">
 						
-							<img src="imagenes/LOGO-FINAL2.png" width="250" height="150">
+							<img src="imagenes/LOGO-FINAL2.png" width="280" height="150">
 					
 					</div>
 				<div class="row">
@@ -82,8 +83,13 @@ document.getElementById("Joyeria").style.display = 'block';
 		</header>
 
 <br><br>
+<div class="container">
+        <div class="row">
+            <div class="box">
+             
+                <div class="col-sm-12">
 <center><font color="#ffbf00" size="+6" face="Trebuchet MS, Arial, Helvetica, sans-serif">PRODUCTOS</font><br><br><br>
-
+	</div>
 <table>
 <tr>
 <td width="100px"><img src="imagenes/BIENVENIDO.png" width="450" height="250"></center><br></td>
@@ -115,12 +121,12 @@ document.getElementById("Joyeria").style.display = 'block';
 	<h2><font face="Trebuchet MS, Arial, Helvetica, sans-serif" size="+3" color="#ffbf00">PRIMERO DEBES INGRESAR O REGISTRATE</center></font></h2><br><br> 
   
     <center>
-    <form method="post" action="loginF.php">   
-    <button class="btn btn-lg btn-primary btn-block btn-sm" style="width:200px"<input type="submit" name="login"> INGRESAR </button>
-  	<br>
+    <form method="post" action="login.php">   
+    <button class="boton_1" style="width:200px"<input type="submit" name="login"> INGRESAR </button>
+  	<br><br>
 	</form>
 	<form method="post" action="registro.php">
-	<button class="btn btn-lg btn-primary btn-block btn-sm" style="width:200px"<input type="submit" name="login">REGISTRARSE </button></form>
+	<button class="boton_1" style="width:200px"<input type="submit" name="login">REGISTRARSE </button></form>
      </center><br><br><br>  
     
 </div>
@@ -132,12 +138,12 @@ document.getElementById("Joyeria").style.display = 'block';
 	<h2><font face="Trebuchet MS, Arial, Helvetica, sans-serif" size="+3" color="#ffbf00">PRIMERO DEBES INGRESAR O REGISTRATE</center></font></h2><br><br> 
  
 	<center>
-   <form method="post" action="loginF.php">   
-    <button class="btn btn-lg btn-primary btn-block btn-sm" style="width:200px"<input type="submit" name="login"> INGRESAR </button>
-  	<br>
+   <form method="post" action="login.php">   
+    <button class="boton_1" style="width:200px"<input type="submit" name="login"> INGRESAR </button>
+  	<br><br>
 	</form>
 	<form method="post" action="registro.php">
-	<button class="btn btn-lg btn-primary btn-block btn-sm" style="width:200px"<input type="submit" name="login">REGISTRARSE </button></form>
+	<button class="boton_1" style="width:200px"<input type="submit" name="login">REGISTRARSE </button></form>
 	</center><br><br><br>
 	
 </div>
@@ -149,12 +155,12 @@ document.getElementById("Joyeria").style.display = 'block';
 	<h2><font face="Trebuchet MS, Arial, Helvetica, sans-serif" size="+3" color="#ffbf00">PRIMERO DEBES INGRESAR O REGISTRATE</center></font></h2><br><br> 
     
     <center>
-    <form method="post" action="loginF.php">   
-    <button class="btn btn-lg btn-primary btn-block btn-sm" style="width:200px"<input type="submit" name="login"> INGRESAR </button>
-  	<br>
+    <form method="post" action="login.php">   
+    <button class="boton_1" style="width:200px"<input type="submit" name="login"> INGRESAR </button>
+  	<br><br>
 	</form>
 	<form method="post" action="registro.php">
-	<button class="btn btn-lg btn-primary btn-block btn-sm" style="width:200px"<input type="submit" name="login">REGISTRARSE </button></form> </center><br><br><br> 
+	<button class="boton_1" style="width:200px"<input type="submit" name="login">REGISTRARSE </button></form> </center><br><br><br> 
     
 </form>
 
@@ -168,12 +174,12 @@ document.getElementById("Joyeria").style.display = 'block';
 	<h2><font face="Trebuchet MS, Arial, Helvetica, sans-serif" size="+3" color="#ffbf00">PRIMERO DEBES INGRESAR O REGISTRATE</center></font></h2><br><br> 
     
     <center>
-    <form method="post" action="loginF.php">   
-    <button class="btn btn-lg btn-primary btn-block btn-sm" style="width:200px"<input type="submit" name="login"> INGRESAR </button>
-  	<br>
+    <form method="post" action="login.php">   
+    <button class="boton_1" style="width:200px"<input type="submit" name="login"> INGRESAR </button>
+  	<br><br>
 	</form>
 	<form method="post" action="registro.php">
-	<button class="btn btn-lg btn-primary btn-block btn-sm" style="width:200px"<input type="submit" name="login">REGISTRARSE </button></form> </center><br><br><br> 
+	<button class="boton_1" style="width:200px"<input type="submit" name="login">REGISTRARSE </button></form> </center><br><br><br> 
     
 </form>
 
