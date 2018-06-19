@@ -1,5 +1,12 @@
 <!DOCTYPE html>
-
+<?php
+error_reporting(E_ERROR);
+session_start();
+if ($_SESSION['estado']!="1")
+{
+	header("Location: vista/logout.php");
+}
+?>
 <html><head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,9 +31,9 @@
     		
 		<header>
 			<div class="container dark-bg no_left no_right">
-            <div class="col-md-4 col-xs-12 no_left">
+           <div class="col-md-4 col-xs-3 no_left">
 						
-							<img src="vista/imagenes/LOGO-FINAL2.png" width="250" height="150">
+							<img src="vista/imagenes/LOGO-FINAL2.png" width="280" height="150">
 					
 					</div>
 				<div class="row">
@@ -56,10 +63,10 @@
 			</div>
 
 			<div class="row">
-				<div class="col-md-12 col-xs-12">
+				<div class="col-md-12 col-xs-12 no_left">
 					<br><br><br>
-			<center><font color="#ffbf00" size="+6" face="Trebuchet MS, Arial, Helvetica, sans-serif">CONOCENOS</font></center><br><br>	
-             </div>
+<center><font color="#ffbf00" size="+6" face="Trebuchet MS, Arial, Helvetica, sans-serif">CONOCENOS</font></center><br><br>
+				</div>
               
 			</div>
 		</div>
@@ -68,13 +75,14 @@
 		<div id="content" class="container">
 
 			<div class="row">
-				<aside class="col-md-4 col-xs-8 no_left">
+				<aside class="col-md-6 col-xs-6">
 
 					<div>
 						<h3 class="header">Peluqueria Equipe Etoile</h3>
 						<ul class="bloc">
 							<li>
-								<p>Peluqueria equipe etoile es un espacio donde entendemos las inquietudes<br> del hombre y la mujer de hoy, para ofrecer una imagen actual y el estilo <br>que mejor refleja con su personalidad.Podras encontrarnos en el centro de<br>Bogota con los mejores profesionales.</p>
+								<p>Peluqueria equipe etoile es un espacio donde entendemos las inquietudes<br> 
+								del hombre y la mujer de hoy, para ofrecer una imagen actual y el estilo <br>que mejor refleja con su personalidad.Podras encontrarnos en el centro de<br>Bogota con los mejores profesionales.</p>
 								
 							</li>
                             <li>
@@ -93,7 +101,7 @@ Sabados 8am a 5 pm.
 					</div>
                     
 
-				</aside><div class="map"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d994.2371536464126!2d-74.07083027083856!3d4.603224836570083!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f99a3c1db9597%3A0x46942fde98946d0c!2zQ2wuIDE4ICM0LTc0LCBCb2dvdMOh!5e0!3m2!1ses!2sco!4v1501850223236" width="600" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+				</aside><div class="map"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d994.2371536464126!2d-74.07083027083856!3d4.603224836570083!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f99a3c1db9597%3A0x46942fde98946d0c!2zQ2wuIDE4ICM0LTc0LCBCb2dvdMOh!5e0!3m2!1ses!2sco!4v1501850223236" width="450" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
 					</div>
 
 
