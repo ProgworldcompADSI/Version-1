@@ -1,5 +1,11 @@
 <!DOCTYPE html>
-
+<?php
+session_start();
+if ($_SESSION['estado']!="1")
+{
+	header("Location: logout.php");
+}
+?>
 <html><head>
 
 		<meta charset="utf-8">
@@ -15,7 +21,7 @@
 <link rel="shortcut icon" type="image/ico" href="imagenes/icono.png"  />
 		<link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
 		<link href="bootstrap/css/style.css" rel="stylesheet" type="text/css" media="all">
-	 
+	 <link rel="stylesheet" type="text/css" href="bootstrap/css/botones.css" />
 	
 
 			
@@ -26,7 +32,7 @@
     		
 		<header>
 			<div class="container dark-bg no_left no_right">
-            <div class="col-md-4 col-xs-12 no_left">
+             <div class="col-md-4 col-xs-3 no_left">
 						
 							<img src="imagenes/LOGO-FINAL2.png" width="250" height="150">
 					
@@ -41,7 +47,10 @@
 		</header>
 
 <br><br>
-<center><font color="#ffbf00" size="+6" face="Trebuchet MS, Arial, Helvetica, sans-serif">SERVICIOS</font><br><br><br>
+<div class="container">
+      
+                <div class="col-sm-12">	
+<center><font color="#ffbf00" size="+6" face="Trebuchet MS, Arial, Helvetica, sans-serif">SERVICIOS</font><br><br><br></div>
 
 <table>
 <tr>
@@ -116,7 +125,7 @@
  <td><input type="date" class="in" style="text-align: center; width:225px; height:30px" name="fecha" size="50" required autofocus>
  </td>
  <td></td>
- <td><select class="sel">
+ <td><select class="sel" name="horario">
   <option>6:00AM</option>
   <option>6:30AM</option>
   <option>7:00AM</option>
@@ -169,18 +178,27 @@
 
 <table>
 <tr>
-<th height="35"><center><font color="#FFF"><h4>ADMINISTRADOR</h4></font></center></th><th width="100"></th>
-<th><center><font color="#FFF"><h4>EMPLEADO:</h4></font></center></th></tr>
+
+<td width="125"><th height="35"><center><font color="#FFF"><h4>EMPLEADO:</h4></font></center></th></tr></td>
 <tr>
-<td><input type="text" class="in" style="text-align: center; width:225px; height:30px" name="admi" size="50" required autofocus
+<input type="hidden" class="in" style="text-align: center; width:225px; height:30px" name="admi" size="50" required autofocus
  value="FLOR RODRIGUEZ" readonly>
-</td>
+
 <td>
 </td>
-<td><select class="sel">
-  <option>EMPLEADO 1</option>
-  <option>EMPLEADO 2 <option</option>
-  <option>EMPLEADO 3</option> 
+ <?php
+  $registro=$mysql->query("SELECT * FROM empleados") or
+ die($mysql->error);
+	 ?>
+<td><select class="sel" name="empleado">
+<?php
+while($reg=$registro->fetch_array())
+ {?>
+  <option><?php echo $reg['nombre'] ." ". $reg['apellido'];?></option>
+ <?php 
+  }
+	  $mysql->close();
+	 ?>
 </select>
 </td>
 </tr>
@@ -190,7 +208,7 @@
 <table>
 <tr>
 <th>
-<button class="btn btn-lg btn-success btn-block btn-sm" style="width:100px" input type="submit" name="login">RESERVAR </button>
+<button class="boton_1" style="width:100px" input type="submit" name="login">RESERVAR </button>
 </th>
 </tr>
 </form>
@@ -253,7 +271,7 @@
  <td><input type="date" class="in" style="text-align: center; width:225px; height:30px" name="fecha" size="50" required autofocus>
  </td>
  <td></td>
- <td><select class="sel">
+ <td><select class="sel" name="horario">
   <option>6:00AM</option>
   <option>6:30AM</option>
   <option>7:00AM</option>
@@ -294,7 +312,7 @@
 <td><input type="text" class="in" style="text-align: center; width:225px; height:30px" value="CORTE DE DAMA" name="servicio" size="50"   readonly></td>
 <td>
 </td>
-<td><input type="text" class="in" style="text-align: center; width:250px; height:30px" name="valor" size="50" required autofocus
+<td><input type="text" class="in" style="text-align: center; width:225px; height:30px" name="valor" size="50" required autofocus
  value="7.000" readonly>
 </td>
 </tr>
@@ -306,19 +324,28 @@
 
 <table>
 <tr>
-<th height="35"><center><font color="#FFF"><h4>ADMINISTRADOR</h4></font></center></th><th width="100"></th>
-<th><center><font color="#FFF"><h4>EMPLEADO:</h4></font></center></th></tr>
+<td width="125"><th height="35"><center><font color="#FFF"><h4>EMPLEADO:</h4></font></center></th></tr></td>
 <tr>
-<td><input type="text" class="in" style="text-align: center; width:225px; height:30px" name="admi" size="50" required autofocus
+<input type="hidden" class="in" style="text-align: center; width:225px; height:30px" name="admi" size="50" required autofocus
  value="FLOR RODRIGUEZ" readonly>
 </td>
+
 <td>
 </td>
-<td><select class="sel">
-  <option>EMPLEADO 1</option>
-  <option>EMPLEADO 2 <option</option>
-  <option>EMPLEADO 3</option> 
-</select>
+<?php
+  $registro=$mysql->query("SELECT * FROM empleados") or
+ die($mysql->error);
+ 
+	 ?>
+<td><select class="sel" name="empleado">
+<?php
+while($reg=$registro->fetch_array())
+ {?>
+  <option><?php echo $reg['nombre'] ." ". $reg['apellido'];?></option>
+ <?php 
+  }
+	  $mysql->close();
+	 ?>
 </td>
 </tr>
 </table><br><br>
@@ -327,7 +354,7 @@
 <table>
 <tr>
 <th>
-<button class="btn btn-lg btn-success btn-block btn-sm" style="width:100px" input type="submit" name="login">RESERVAR </button>
+<button class="boton_1" style="width:100px" input type="submit" name="login">RESERVAR </button>
 </th>
 </tr>
 </form>
@@ -375,7 +402,7 @@
  </td>
  <td></td>
  <td>
- <input type="text" class="in"  style="text-align: center; width:250px; height:30px" name="apellidoo" size="50" required autofocus
+ <input type="text" class="in"  style="text-align: center; width:225px; height:30px" name="apellidoo" size="50" required autofocus
  value="<?php echo $reg['apellido']; ?>" readonly>
  </td>
  <td height="20"></td>
@@ -394,7 +421,7 @@
  <td><input type="date" class="in" style="text-align: center; width:225px; height:30px" name="fecha" size="50" required autofocus>
  </td>
  <td></td>
- <td><select class="sel">
+ <td><select class="sel" name="horario">
   <option>6:00AM</option>
   <option>6:30AM</option>
   <option>7:00AM</option>
@@ -435,7 +462,7 @@
 <td><input type="text" class="in" style="text-align: center; width:225px; height:30px" value="CEPILLADO" name="servicio" size="50"   readonly></td>
 <td>
 </td>
-<td><input type="text" class="in" style="text-align: center; width:250px; height:30px" name="valor" size="50" required autofocus
+<td><input type="text" class="in" style="text-align: center; width:225px; height:30px" name="valor" size="50" required autofocus
  value="7.000" readonly>
 </td>
 </tr>
@@ -447,18 +474,27 @@
 
 <table>
 <tr>
-<th height="35"><center><font color="#FFF"><h4>ADMINISTRADOR</h4></font></center></th><th width="100"></th>
-<th><center><font color="#FFF"><h4>EMPLEADO:</h4></font></center></th></tr>
+<td width="125"><th height="35"><center><font color="#FFF"><h4>EMPLEADO:</h4></font></center></th></tr></td>
 <tr>
-<td><input type="text" class="in" style="text-align: center; width:225px; height:30px" name="admi" size="50" required autofocus
+<input type="hidden" class="in" style="text-align: center; width:225px; height:30px" name="admi" size="50" required autofocus
  value="FLOR RODRIGUEZ" readonly>
 </td>
 <td>
 </td>
-<td><select class="sel">
-  <option>EMPLEADO 1</option>
-  <option>EMPLEADO 2 <option</option>
-  <option>EMPLEADO 3</option> 
+<?php
+  $registro=$mysql->query("SELECT * FROM empleados") or
+ die($mysql->error);
+ 
+	 ?>
+<td><select class="sel" name="empleado">
+<?php
+while($reg=$registro->fetch_array())
+ {?>
+  <option><?php echo $reg['nombre'] ." ". $reg['apellido'];?></option>
+ <?php 
+  }
+	  $mysql->close();
+	 ?>
 </select>
 </td>
 </tr>
@@ -468,7 +504,7 @@
 <table>
 <tr>
 <th>
-<button class="btn btn-lg btn-success btn-block btn-sm" style="width:100px" input type="submit" name="login">RESERVAR </button>
+<button class="boton_1" style="width:100px" input type="submit" name="login">RESERVAR </button>
 </th>
 </tr>
 </form>
@@ -514,7 +550,7 @@
  </td>
  <td></td>
  <td>
- <input type="text" class="in"  style="text-align: center; width:250px; height:30px" name="apellidoo" size="50" required autofocus
+ <input type="text" class="in"  style="text-align: center; width:225px; height:30px" name="apellidoo" size="50" required autofocus
  value="<?php echo $reg['apellido']; ?>" readonly>
  </td>
  <td height="20"></td>
@@ -533,7 +569,7 @@
  <td><input type="date" class="in" style="text-align: center; width:225px; height:30px" name="fecha" size="50" required autofocus>
  </td>
  <td></td>
- <td><select class="sel">
+ <td><select class="sel" name="horario">
   <option>6:00AM</option>
   <option>6:30AM</option>
   <option>7:00AM</option>
@@ -574,7 +610,7 @@
 <td><input type="text" class="in" style="text-align: center; width:225px; height:30px" value="MANICURE" name="servicio" size="50"   readonly></td>
 <td>
 </td>
-<td><input type="text" class="in" style="text-align: center; width:250px; height:30px" name="valor" size="50" required autofocus
+<td><input type="text" class="in" style="text-align: center; width:225px; height:30px" name="valor" size="50" required autofocus
  value="7.000" readonly>
 </td>
 </tr>
@@ -586,18 +622,27 @@
 
 <table>
 <tr>
-<th height="35"><center><font color="#FFF"><h4>ADMINISTRADOR</h4></font></center></th><th width="100"></th>
-<th><center><font color="#FFF"><h4>EMPLEADO:</h4></font></center></th></tr>
+<td width="125"><th height="35"><center><font color="#FFF"><h4>EMPLEADO:</h4></font></center></th></tr></td>
 <tr>
-<td><input type="text" class="in" style="text-align: center; width:225px; height:30px" name="admi" size="50" required autofocus
+<input type="hidden" class="in" style="text-align: center; width:225px; height:30px" name="admi" size="50" required autofocus
  value="FLOR RODRIGUEZ" readonly>
 </td>
 <td>
 </td>
-<td><select class="sel">
-  <option>EMPLEADO 1</option>
-  <option>EMPLEADO 2 <option</option>
-  <option>EMPLEADO 3</option> 
+<?php
+  $registro=$mysql->query("SELECT * FROM empleados") or
+ die($mysql->error);
+ 
+	 ?>
+<td><select class="sel" name="empleado">
+<?php
+while($reg=$registro->fetch_array())
+ {?>
+  <option><?php echo $reg['nombre'] ." ". $reg['apellido'];?></option>
+ <?php 
+  }
+	  $mysql->close();
+	 ?>
 </select>
 </td>
 </tr>
@@ -607,7 +652,7 @@
 <table>
 <tr>
 <th>
-<button class="btn btn-lg btn-success btn-block btn-sm" style="width:100px" input type="submit" name="login">RESERVAR </button>
+<button class="boton_1" style="width:100px" input type="submit" name="login">RESERVAR </button>
 </th>
 </tr>
 </form>
@@ -653,7 +698,7 @@
  </td>
  <td></td>
  <td>
- <input type="text" class="in"  style="text-align: center; width:250px; height:30px" name="apellidoo" size="50" required autofocus
+ <input type="text" class="in"  style="text-align: center; width:225px; height:30px" name="apellidoo" size="50" required autofocus
  value="<?php echo $reg['apellido']; ?>" readonly>
  </td>
  <td height="20"></td>
@@ -672,7 +717,7 @@
  <td><input type="date" class="in" style="text-align: center; width:225px; height:30px" name="fecha" size="50" required autofocus>
  </td>
  <td></td>
- <td><select class="sel">
+ <td><select class="sel" name="horario">
   <option>6:00AM</option>
   <option>6:30AM</option>
   <option>7:00AM</option>
@@ -713,7 +758,7 @@
 <td><input type="text" class="in" style="text-align: center; width:225px; height:30px" value="PEDICURE" name="servicio" size="50"   readonly></td>
 <td>
 </td>
-<td><input type="text" class="in" style="text-align: center; width:250px; height:30px" name="valor" size="50" required autofocus
+<td><input type="text" class="in" style="text-align: center; width:225px; height:30px" name="valor" size="50" required autofocus
  value="12.000" readonly>
 </td>
 </tr>
@@ -725,18 +770,27 @@
 
 <table>
 <tr>
-<th height="35"><center><font color="#FFF"><h4>ADMINISTRADOR</h4></font></center></th><th width="100"></th>
-<th><center><font color="#FFF"><h4>EMPLEADO:</h4></font></center></th></tr>
+<td width="125"><th height="35"><center><font color="#FFF"><h4>EMPLEADO:</h4></font></center></th></tr></td>
 <tr>
-<td><input type="text" class="in" style="text-align: center; width:225px; height:30px" name="admi" size="50" required autofocus
+<input type="hidden" class="in" style="text-align: center; width:225px; height:30px" name="admi" size="50" required autofocus
  value="FLOR RODRIGUEZ" readonly>
 </td>
 <td>
 </td>
-<td><select class="sel">
-  <option>EMPLEADO 1</option>
-  <option>EMPLEADO 2 <option</option>
-  <option>EMPLEADO 3</option> 
+<?php
+  $registro=$mysql->query("SELECT * FROM empleados") or
+ die($mysql->error);
+ 
+	 ?>
+<td><select class="sel" name="empleado">
+<?php
+while($reg=$registro->fetch_array())
+ {?>
+  <option><?php echo $reg['nombre'] ." ". $reg['apellido'];?></option>
+ <?php 
+  }
+	  $mysql->close();
+	 ?>
 </select>
 </td>
 </tr>
@@ -746,7 +800,7 @@
 <table>
 <tr>
 <th>
-<button class="btn btn-lg btn-success btn-block btn-sm" style="width:100px" input type="submit" name="login">RESERVAR </button>
+<button class="boton_1" style="width:100px" input type="submit" name="login">RESERVAR </button>
 </th>
 </tr>
 </form>
@@ -792,7 +846,7 @@
  </td>
  <td></td>
  <td>
- <input type="text" class="in"  style="text-align: center; width:250px; height:30px" name="apellidoo" size="50" required autofocus
+ <input type="text" class="in"  style="text-align: center; width:225px; height:30px" name="apellidoo" size="50" required autofocus
  value="<?php echo $reg['apellido']; ?>" readonly>
  </td>
  <td height="20"></td>
@@ -811,7 +865,7 @@
  <td><input type="date" class="in" style="text-align: center; width:225px; height:30px" name="fecha" size="50" required autofocus>
  </td>
  <td></td>
- <td><select class="sel">
+ <td><select class="sel" name="horario">
   <option>6:00AM</option>
   <option>6:30AM</option>
   <option>7:00AM</option>
@@ -852,7 +906,7 @@
 <td><input type="text" class="in" style="text-align: center; width:225px; height:30px" value="TINTURA" name="servicio" size="50"   readonly></td>
 <td>
 </td>
-<td><input type="text" class="in" style="text-align: center; width:250px; height:30px" name="valor" size="50" required autofocus
+<td><input type="text" class="in" style="text-align: center; width:225px; height:30px" name="valor" size="50" required autofocus
  value="60.000" readonly>
 </td>
 </tr>
@@ -864,18 +918,27 @@
 
 <table>
 <tr>
-<th height="35"><center><font color="#FFF"><h4>ADMINISTRADOR</h4></font></center></th><th width="100"></th>
-<th><center><font color="#FFF"><h4>EMPLEADO:</h4></font></center></th></tr>
+<td width="125"><th height="35"><center><font color="#FFF"><h4>EMPLEADO:</h4></font></center></th></tr></td>
 <tr>
-<td><input type="text" class="in" style="text-align: center; width:225px; height:30px" name="admi" size="50" required autofocus
+<input type="hidden" class="in" style="text-align: center; width:225px; height:30px" name="admi" size="50" required autofocus
  value="FLOR RODRIGUEZ" readonly>
 </td>
 <td>
 </td>
-<td><select class="sel">
-  <option>EMPLEADO 1</option>
-  <option>EMPLEADO 2 <option</option>
-  <option>EMPLEADO 3</option> 
+<?php
+  $registro=$mysql->query("SELECT * FROM empleados") or
+ die($mysql->error);
+ 
+	 ?>
+<td><select class="sel" name="empleado">
+<?php
+while($reg=$registro->fetch_array())
+ {?>
+  <option><?php echo $reg['nombre'] ." ". $reg['apellido'];?></option>
+ <?php 
+  }
+	  $mysql->close();
+	 ?>
 </select>
 </td>
 </tr>
@@ -885,7 +948,7 @@
 <table>
 <tr>
 <th>
-<button class="btn btn-lg btn-success btn-block btn-sm" style="width:100px" input type="submit" name="login">RESERVAR </button>
+<button class="boton_1" style="width:100px" input type="submit" name="login">RESERVAR </button>
 </th>
 </tr>
 </form>
