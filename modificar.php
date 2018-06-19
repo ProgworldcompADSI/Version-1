@@ -18,9 +18,23 @@ if ($_SESSION['estado']!="1")
 <link rel="shortcut icon" type="image/ico" href="imagenes/icono.png"  />
 		<link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
 		<link href="bootstrap/css/style.css" rel="stylesheet" type="text/css" media="all">
-		<link rel="stylesheet" type="text/css" href="bootstrap/css/botones.css" />
-		<link rel="stylesheet" type="text/css" href="bootstrap/css/selects.css" />
-	
+                <link rel="stylesheet" type="text/css" href="bootstrap/css/botones.css" />
+                <link rel="stylesheet" type="text/css" href="bootstrap/css/selects.css" />
+	<style>
+ label.C{
+		
+		background-color: #000000;
+		border-top: transparent;
+	    border-bottom:4px solid #ffbf00;
+		border-bottom-right-radius: 15px;
+	    border-bottom-left-radius: 15px;
+		padding: 8px, 8px;
+		cursor: pointer;
+		
+		}
+
+
+</style>
 <style type="text/css">
 
 * {
@@ -77,7 +91,7 @@ background-color:#333;
     		
 		<header>
 			<div class="container dark-bg no_left no_right">
-            <div class="col-md-4 col-xs-12 no_left">
+            <div class="col-md-4 col-xs-3 no_left">
 						
 						<img src="imagenes/LOGO-FINAL2.png" width="280" height="150">
 					
@@ -100,7 +114,7 @@ background-color:#333;
                     <div class="container">
         <div class="card card-container">
     
-    <?php include_once'../modelo/Musuario.php';?>
+ <?php include_once'../modelo/Musuario.php';?>
 <br><br>       
  <?php
  error_reporting(E_ERROR);
@@ -117,13 +131,15 @@ background-color:#333;
  if ($reg=$registro->fetch_array())
  {
  ?>
+
  <form method="post" action="modificar1.php">
-<h4>INGRESE SU CONTRESEÑA ACTUAL :</h4><br>
+<span style="color:#39ff14; font-size:20px;">INGRESE SU CONTRESEÑA:</span>
+<br><br>
  <input type="password" class="in" style="width:300px; height:30px" name="antigua" size="50" required autofocus
 >
  <br><br>
 
-  <button class="boton_1" style="width:125px" input type="submit" name="login">VALIDAR </button>
+  <button class="boton_1" style="width:200px"<input type="submit" name="login">VALIDAR </button>
  </form>
 <br>
 
