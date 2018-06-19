@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <?php
+error_reporting(E_ERROR);
 session_start();
+if ($_SESSION['estado']!="1")
+{
+	header("Location: logout.php");
+}
 ?>
 <html><head>
 
@@ -14,6 +19,23 @@ session_start();
 		<link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
 		<link href="bootstrap/css/style.css" rel="stylesheet" type="text/css" media="all">
         <link rel="stylesheet" href="bootstrap/css/style2.css" type="text/css" media="screen"/>
+        <link rel="stylesheet" href="bootstrap/css/botones.css" type="text/css" media="screen"/>
+        <link rel="stylesheet" href="bootstrap/css/tablasC.css" type="text/css" media="screen"/>
+    <style>
+ label.C{
+		
+		background-color: #000000;
+		border-top: transparent;
+	    border-bottom:4px solid #ffbf00;
+		border-bottom-right-radius: 15px;
+	    border-bottom-left-radius: 15px;
+		padding: 8px, 8px;
+		cursor: pointer;
+		
+		}
+
+
+</style>    
 	
 <style type="text/css">
 
@@ -21,7 +43,7 @@ session_start();
  padding:0px;
  margin:0px;
  font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
-
+ font-size:+6;
 }
 
 
@@ -71,7 +93,7 @@ background-color:#333;
     		
 		<header>
 			<div class="container dark-bg no_left no_right">
-            <div class="col-md-4 col-xs-12 no_left">
+            <div class="col-md-4 col-xs-3 no_left">
 						
 							<img src="imagenes/LOGO-FINAL2.png" width="280" height="150">
 					
@@ -79,7 +101,7 @@ background-color:#333;
 				<div class="row">
 
 		
-					<?php include_once'../modelo/header3.php';?>
+					<?php include_once'../modelo/header2.php';?>
 
 				</div>
 			</div>
@@ -91,34 +113,15 @@ background-color:#333;
             <div class="box">
                 <div class="col-lg-12">
                   <center>
- <table>
- <th width="163">
+ <?php include_once'../modelo/Musuario.php';?>
+<br>
+           
+ <a href="reservado1.php"><button class="boton_1">VER RESERVAS</button></a>    <br> <br> 
 
-<div id="">
- <ul class="nav">
-     
-        <li><a href="reservadoa.php"><center>OPCIONES DE RESERVA</center></a>
-         <ul>
-          <li><a href="reservadoa1.php">RESERVAS DEL DIA DE HOY</a></li>
-             <li><a href="reservadoa2.php">CONSULTA RESERVA POR CEDULA</a></li>
-               <li><a href="reservadoa4.php"><font size="1px">CONSULTAR RESERVA POR EMPLEADO</font></a> 
-               <ul><a href="reservadoa5.php"><font size="1px">RESERVAS POR EMPLEADO DE HOY</a></font></ul></li>
-             <li><a href="reservadoa3.php">HISTORIAL DE RESERVAS</a> </li>
+  <center><font color="#FFF" size="+3" face="Trebuchet MS, Arial, Helvetica, sans-serif">CANCELAR RESERVAS:</font></center><br><br>
 
-            </ul>
-        </li>
-        
- </ul>
-</div>
-</th>
-</table>
-<br><br>
-                    
 
-  <center><font color="#FF3300" size="+3" face="Trebuchet MS, Arial, Helvetica, sans-serif">RESERVAS:</font></center><br><br>
-
- 
- <?php
+<?php
  error_reporting(E_ERROR);
  $mysql=new mysqli("localhost","root","","peluqueria");
  if ($mysql->connect_error)
@@ -127,53 +130,23 @@ background-color:#333;
  $a2=($_SESSION['clave']);
  
  
- $registro=$mysql->query("SELECT usuario.nombre,usuario.apellido,usuario.documento,idreservas, fecha, hora, servicio,precio,usuario, empleado,estado FROM reservas INNER JOIN usuario ON reservas.usuario=usuario.documento WHERE reservas.estado='activo' order by fecha asc") or
+ $registro=$mysql->query("SELECT idreservas, fecha, hora, servicio,precio, empleado,estado FROM reservas  WHERE 
+ usuario = '$d1' and estado='activo' order by fecha desc") or
  die($mysql->error);
 
- echo "<center>";
-   echo '<table class="tabla1">';
- echo '<tr ><thead><th>CLIENTE  </th><th>   IDENTIFICACION </th><th>  FECHA  </th><th>  HORA </th> <th>SERVICIO </th><th>PRECIO </th><th>EMPLEADO </th><th>ESTADO </th><th> </th><th> </th></tr></thead>';
+    echo "<center><table><tr><td width='75px'>";
+    echo '<div class="tablas"><table>';
+ echo '<thead><tr><th>FECHA</th><th>HORA</th><th>SERVICIO</th><th>PRECIO</th><th>EMPLEADO</th><th>ESTADO</th><th>CANCELAR</th></tr></thead>';
+ 
  while ($reg=$registro->fetch_array())
  {
- echo '<tr><tbody>';
- echo '<td WIDTH="800" 
-	    HEIGHT="35">';
- echo $reg['nombre'].' '.$reg['apellido'];
- echo '</td>';
- echo '<td WIDTH="120">';
- echo $reg['documento'];
- echo '</td>';
- echo '<td WIDTH="800">';
- echo $reg['fecha'];
- echo '</td>';
-  echo '<td WIDTH="150">';
- echo $reg['hora'];
- echo '</td>';
-   echo '<td WIDTH="200">';
- echo $reg['servicio'];
- echo '</td>';
-  echo '<td WIDTH="200">';
- echo $reg['precio'];
- echo '</td>';
-  echo '<td WIDTH="200">';
- echo $reg['empleado'];
- echo '</td>';
-  echo '<td WIDTH="200">';
- echo $reg['estado'];
- echo '<td WIDTH="500">';
-echo "<font color='#CC0000'><a href='reservadoa.php?idreservas=$reg[idreservas] '>CANCELAR <img src='imagenes/ex.png' width='30' height='30'></a>";
- echo '<td WIDTH="500">';
-echo "<font color='#CC0000'><a href='reservadoa.php?idreservas=$reg[idreservas] '>REALIZADO <img src='imagenes/chulo.png' width='30' height='30'></a>";
+ echo "<tbody><tr class='alt'><td>".$reg['fecha'] ."</td><td>".$reg['hora']."</td><td>".$reg['servicio']."</td><td>".$reg['precio']."</td><td>".$reg['empleado']."</td><td>".$reg['estado']."</td><td><center><a href='cancelar.php?idreservas=$reg[idreservas]'><img src='imagenes/ex.png' width='30' height='30'></a></center></td></tr></tbody>";
 
- echo '</td></tbody>';
-
-  }
- 
- 
-
+ }
+echo "</table></div></td></tr></table></center>";
  $mysql->close();
  ?>
-
+ <br><br>
  </center>
  
 
